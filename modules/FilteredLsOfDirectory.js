@@ -6,7 +6,7 @@ module.exports = function(directory, filetype, callback) {
 
     fs.readdir(directory, function(err, files) {
         if (err) {
-            callback(error);
+            return callback(err);
         }
 
         var filteredList = [];

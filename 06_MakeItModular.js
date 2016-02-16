@@ -7,7 +7,7 @@ function printArray(error, array) {
     'use strict';
 
     if (error) {
-        console.log(error.message);
+        console.log(error);
         return;
     }
 
