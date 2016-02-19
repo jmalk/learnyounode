@@ -1,0 +1,23 @@
+{
+  "name": "learnyounode-solutions",
+  "version": "1.0.0",
+  "description": "Solutions to workshopper/learnyounode",
+  "main": "01_HelloWorld.js",
+  "dependencies": {
+    "bl": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmalk/learnyounode.git"
+  },
+  "author": "jmalk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmalk/learnyounode/issues"
+  },
+  "homepage": "https://github.com/jmalk/learnyounode#readme"
+}
