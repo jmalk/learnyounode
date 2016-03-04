@@ -1,11 +1,11 @@
 var http = require('http'),
     bl = require('bl');
 
-var urlArray = [process.argv[2], process.argv[3], process.argv[4]];
+var urls = [process.argv[2], process.argv[3], process.argv[4]];
 
-var responseQueue = [];
+var responses = [];
 
-urlArray.forEach(httpGet);
+urls.forEach(httpGet);
 
 function httpGet (url, index) {
     'use strict';
@@ -16,22 +16,22 @@ function httpGet (url, index) {
                 return console.error(error);
             }
             var responseString = data.toString();
-            responseQueue[index] = responseString;
-            if (responseQueueFilled()) {
-                logResponseQueue();
+            responses[index] = responseString;
+            if (allResponsesReceived()) {
+                printAllResponses();
             }
         }));
     });
 }
 
-function responseQueueFilled() {
+function allResponsesReceived() {
     'use strict';
-    return responseQueue[0] && responseQueue[1] && responseQueue[2];
+    return responses[0] && responses[1] && responses[2];
 }
 
-function logResponseQueue() {
+function printAllResponses() {
     'use strict';
-    console.log(responseQueue[0]);
-    console.log(responseQueue[1]);
-    console.log(responseQueue[2]);
+    console.log(responses[0]);
+    console.log(responses[1]);
+    console.log(responses[2]);
 }
