@@ -5,50 +5,24 @@ var urlArray = [process.argv[2], process.argv[3], process.argv[4]];
 
 var responseQueue = [];
 
-http.get(urlArray[0], function(response) {
-    'use strict';
-    response.setEncoding('utf8');
-    response.pipe(bl(function (error, data) {
-        if (error) {
-            return console.error(error);
-        }
-        var responseString = data.toString();
-        responseQueue[0] = responseString;
-        if (responseQueueFilled()) {
-            logResponseQueue();
-        }
-    }));
-});
+urlArray.forEach(httpGet);
 
-http.get(urlArray[1], function(response) {
+function httpGet (url, index) {
     'use strict';
-    response.setEncoding('utf8');
-    response.pipe(bl(function (error, data) {
-        if (error) {
-            return console.error(error);
-        }
-        var responseString = data.toString();
-        responseQueue[1] = responseString;
-        if (responseQueueFilled()) {
-            logResponseQueue();
-        }
-    }));
-});
-
-http.get(urlArray[2], function(response) {
-    'use strict';
-    response.setEncoding('utf8');
-    response.pipe(bl(function (error, data) {
-        if (error) {
-            return console.error(error);
-        }
-        var responseString = data.toString();
-        responseQueue[2] = responseString;
-        if (responseQueueFilled()) {
-            logResponseQueue();
-        }
-    }));
-});
+    http.get(url, function(response) {
+        response.setEncoding('utf8');
+        response.pipe(bl(function (error, data) {
+            if (error) {
+                return console.error(error);
+            }
+            var responseString = data.toString();
+            responseQueue[index] = responseString;
+            if (responseQueueFilled()) {
+                logResponseQueue();
+            }
+        }));
+    });
+}
 
 function responseQueueFilled() {
     'use strict';
