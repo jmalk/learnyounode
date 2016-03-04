@@ -15,8 +15,7 @@ function httpGet (url, index) {
             if (error) {
                 return console.error(error);
             }
-            var responseString = data.toString();
-            responses[index] = responseString;
+            responses[index] = data.toString();
             if (allResponsesReceived()) {
                 printAllResponses();
             }
