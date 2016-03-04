@@ -5,18 +5,6 @@ var urlArray = [process.argv[2], process.argv[3], process.argv[4]];
 
 var responseQueue = [];
 
-function responseQueueFilled() {
-    'use strict';
-    return responseQueue[0] && responseQueue[1] && responseQueue[2];
-}
-
-function logResponseQueue() {
-    'use strict';
-    console.log(responseQueue[0]);
-    console.log(responseQueue[1]);
-    console.log(responseQueue[2]);
-}
-
 http.get(urlArray[0], function(response) {
     'use strict';
     response.setEncoding('utf8');
@@ -61,3 +49,15 @@ http.get(urlArray[2], function(response) {
         }
     }));
 });
+
+function responseQueueFilled() {
+    'use strict';
+    return responseQueue[0] && responseQueue[1] && responseQueue[2];
+}
+
+function logResponseQueue() {
+    'use strict';
+    console.log(responseQueue[0]);
+    console.log(responseQueue[1]);
+    console.log(responseQueue[2]);
+}
