@@ -1,8 +1,8 @@
 var http = require('http'),
     fs = require('fs');
 
-var port = Number(process.argv[2]),
-    file = process.argv[3];
+var port = Number(process.argv[2]) || 8000,
+    file = process.argv[3] || "11_HttpFileServer";
 
 var server = http.createServer(function (req, res) {
     'use strict';
